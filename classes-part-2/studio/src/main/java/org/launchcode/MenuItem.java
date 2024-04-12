@@ -1,10 +1,12 @@
 package org.launchcode;
 
+import javax.swing.*;
+
 public class MenuItem {
-    private double price;
-    private String description;
-    private String category;
-    private boolean isNew;
+    private double price; //stores price
+    private String description; //stores description
+    private String category; // stores category
+    private boolean isNew; //new indicator
 
     public MenuItem(double p, String d, String c, boolean iN) {
         this.price = p;
@@ -13,20 +15,43 @@ public class MenuItem {
         this.isNew = iN;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+        //GETTER FOR PRICE
+        public double getPrice() {
+            return price;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        //SETTER FOR PRICE
+        public void setPrice(double price) {
+            this.price = price;
+        }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+        //GETTER FOR DESCRIPTION
+        public String getDescription() {
+            return description;
+        }
 
-    public void setNew(boolean aNew) {
-        isNew = aNew;
-    }
-}
+        //SETTER FOR DESCRIPTION
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
+        //GETTER FOR CATEGORY
+        public String getCategory() {
+            return category;
+        }
+
+        //SETTER FOR CATEGORY
+        public void setCategory(String category) {
+            this.category = category;
+        }
+
+        //GETTER FOR isNew
+        public boolean isNew() {
+            return isNew;
+        }
+
+        //SETTER FOR isNew
+        public void setNew(boolean aNew) {
+            isNew = aNew;
+        }
+    }
