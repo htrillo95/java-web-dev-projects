@@ -45,7 +45,12 @@ public class Car {
         return gasTankLevel;
     }
 
+
+    //PART 5 REFACTOR (NEED CAR TO THROW EXCEPTION) TOO MUCH GAS!!!
     public void setGasTankLevel(double gasTankLevel) {
+        if (gasTankLevel > this.gasTankSize) {
+            throw new IllegalArgumentException("CAN'T EXCEED TANK SIZE!!!");
+        }
         this.gasTankLevel = gasTankLevel;
     }
 
@@ -68,8 +73,7 @@ public class Car {
      *
      * @param miles - the miles to drive
      */
-    public void drive(double miles)
-    {
+    public void drive(double miles) {
         //adjust fuel based on mpg and miles requested to drive
         double maxDistance = this.milesPerGallon * this.gasTankLevel;
         /**the double below uses some syntax called the ternary operator.
@@ -84,4 +88,7 @@ public class Car {
         this.odometer += milesAbleToTravel;
     }
 
+    public void addGas(double gas) {
+        this.setGasTankLevel(gas + this.getGasTankLevel());
+    }
 }
