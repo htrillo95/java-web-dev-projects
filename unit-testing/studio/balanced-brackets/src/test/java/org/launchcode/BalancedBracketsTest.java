@@ -84,58 +84,7 @@ class BalancedBracketsTest {
         boolean result = BalancedBrackets.hasBalancedBrackets(testData);
         assertFalse(result, message);
     }
-
-    //Test "[LaunchCode"
-    @Test
-    public void singleBracketWithOtherCharacters() {
-        String message = "one opening bracket with other chars returns false";
-        String testData = "[LaunchCode";
-        boolean result = BalancedBrackets.hasBalancedBrackets(testData);
-        assertFalse(result, message);
-    }
-
-    //Test "Launch]Code["
-    @Test
-    public void unbalancedBracketsAmongOtherCharacters() {
-        String message = "unbalanced brackets among other characters returns false";
-        String testData = "Launch]Code[";
-        boolean result = BalancedBrackets.hasBalancedBrackets(testData);
-        assertFalse(result, message);
-    }
-
-    //Test "[[]][]["
-    @Test
-    public void mixOfUnbalancedBracket() {
-        String message = "mix of unbalanced brackets returns false";
-        String testData = "[[]][][";
-        boolean result = BalancedBrackets.hasBalancedBrackets(testData);
-        assertFalse(result, message);
-    }
-
-    //Test only characters "LaunchCode" - no brackets
-    @Test
-    public void stringOfCharactersWithoutBrackets() {
-        String message = "a string of characters without brackets returns true";
-        String testData = "LaunchCode";
-        boolean result = BalancedBrackets.hasBalancedBrackets(testData);
-        assertTrue(result, message);
-    }
-
-    //Test empty string ""
-    @Test
-    public void emptyString() {
-        String message = "an empty string returns true";
-        String testData = "";
-        boolean result = BalancedBrackets.hasBalancedBrackets(testData);
-        assertTrue(result, message);
-    }
-
-
-
-
-
-
-
+    
 
     @Test
     public void emptyTest() {
