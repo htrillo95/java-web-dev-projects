@@ -1,12 +1,19 @@
 package org.launchcode;
-
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Test out your Divide() function!
+        // Test out your Divide() function! ADDED CODE HERE PART 1:
+
+        try {
+            int result = Divide(10,2); //CHANGED y:0 to y:2
+            System.out.println("Result of division: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
 
         HashMap<String, String> studentFiles = new HashMap<>();
         studentFiles.put("Carl", "Program.java");
@@ -14,68 +21,42 @@ public class Main {
         studentFiles.put("Elizabeth", "MyCode.java");
         studentFiles.put("Stefanie", "CoolProgram.java");
 
-        // Test out your CheckFileExtension() function!
-    }
-
-    public static void Divide(int x, int y)
-    {
-        // Write code here!
-    }
-
-    public static int CheckFileExtension(String fileName)
-    {
-        // Write code here!
-    }
-
-    public static class ArrayListPractice {
-        public static void main(String[] args) {
-            // Create an ArrayList with at least 10 integers
-            ArrayList<Integer> numbers = new ArrayList<>();
-            for (int i = 1; i <= 10; i++) {
-                numbers.add(i * 2); // Adding even numbers from 2 to 20
+        // Test out your CheckFileExtension() function! PART 2/2nd HALF DONE HERE
+        for (Map.Entry<String,String> entry : studentFiles.entrySet()) {
+            String studentName = entry.getKey();
+            String fileName = entry.getValue();
+            try {
+                int points = CheckFileExtension(fileName);
+                System.out.println(studentName + ": " + points + " points");
+            } catch (IllegalArgumentException e) {
+                System.out.println(studentName + ": Error - " + e.getMessage());
             }
+        }
+    }
 
-            // Call the sumEven method and print the result
-            int sumOfEvens = sumEven(numbers);
-            System.out.println("Sum of even numbers: " + sumOfEvens);
+    public static int Divide(int x, int y) //switch from VOID to INT
+    {
+        // Write code here! PART 1 CONTINUED...
+        if (y == 0) {
+            throw new ArithmeticException("Cannot divide by zero.");
+        }
+        return x / y;
 
-            // Create an ArrayList with some words
-            ArrayList<String> wordsList = new ArrayList<>();
-            wordsList.add("apple");
-            wordsList.add("banana");
-            wordsList.add("grape");
-            wordsList.add("melon");
-            wordsList.add("peach");
-            wordsList.add("lemon");
+    }
 
-            // Prompt the user to enter the word length for the search
-            Scanner input = new Scanner(System.in);
-            System.out.println("Enter a word length: ");
-            int numChars = input.nextInt();
+    public static int CheckFileExtension(String fileName) {
 
-            // Call the printWordsWithLength method with the user-input length
-            printWordsWithLength(wordsList, numChars);
-
-            input.close(); // Close the scanner
+        // Write code here! PART 2 STARTS HERE!
+        if (fileName == null || fileName.isEmpty()) {
+            throw new IllegalArgumentException("File name cannot be null/empty.. ");
         }
 
-        public static int sumEven(ArrayList<Integer> arr) { //iterates through arraylist adds even numbers
-            int total = 0;
-            for (int integer : arr) {
-                if (integer % 2 == 0) {
-                    total += integer;
-                }
-            }
-            return total;
-        }
+        //PREVIOUSLY GIVEN
+        if (fileName.endsWith(".java")) {
+            return 1;
+        } else {
 
-        public static void printWordsWithLength(ArrayList<String> words, int length) {
-            System.out.println("Words with length " + length + ":");
-            for (String word : words) {
-                if (word.length() == length) {
-                    System.out.println(word);
-                }
-            }
+            return 0;
         }
     }
 }
